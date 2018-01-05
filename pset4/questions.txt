@@ -1,0 +1,20 @@
+0.  32 bits, 8 bits, 24 bits, 24 bits 
+1.  GIF
+2.  lossless : no data of the originale file is deleted ; lossy : some of the data of the original file is deleted, so can never turn back to its original quality.
+3.  jpeg files use lossy compression.
+4.  the address of the data, which indicates how to access to the file, is placed in the empty space list;  but the data is not
+5.  two solutions : overwrite the empty space with random bits or more efficient, destroy the hard disk
+6.  Stdint.h is a library of already defined structures
+7.  it is usufeull when requiring entire data fixed widths, specific and accurate alignments locations
+8.  8, 32, 32, 16
+9.  0x42 0x4D
+10. bfsize is in the BITMAPFILEHEADER struct ; bisize is in the BITMAPINFOHEADER struct
+11. biHeight is negative when the image is stored from top to bottom.
+12. biBitCount
+13. outputfile == NULL ; couldn't create output file
+14. because we want to copy only once all the bits of structures, which value is already indicated by th sizeof() function; we get though the exact copy of the first .bmp file 
+15. 1
+16. fseek changes the infile bytes postion, skipping the padding inputs (which are the added, with the fputc() function.
+17. SEEK_CUR is a win macro which indicates the place where the fseek function looks at.
+18. Rick Astley, we have a wonderfull youtube video, thanks to the bit.ly/18gECvy link in the card.raw link :)
+

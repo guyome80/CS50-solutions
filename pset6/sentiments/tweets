@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+# TODO
+import os
+import sys
+import helpers
+
+from analyzer import Analyzer
+from termcolor import colored
+
+def main():
+# ensure proper usage
+    if len(sys.argv) != 2:
+        sys.exit("Usage: ./tweets @screenname")
+
+    # validate screen_name
+    screen_name = sys.argv[1]
+    while not screen_name:
+        break
+
+    # get the precise screen name
+    screen_name = sys.argv[1].strip('@')
+
+    # tweets = "I love my dude Bing who is so nice !!! But he can be silly and crazy fool a+ 2-faced"
+    tweets = helpers.get_user_timeline(screen_name,50)
+
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+
+    # instantiate analyzer
+    analyzer = Analyzer(positives, negatives)
+
+    # analyze word 50 tweets
+    for tweet in tweets:
+        # analyse each tweet
+        score = analyzer.analyze(tweet)
+
+        # chek the score value
+        if score > 0.0:
+
+            # print positive score and tweet in green
+            gscore = colored(score, "green")
+            print(gscore, end=' ')
+            print(colored(tweet, "green"))
+
+        # chek the score value
+        elif score < 0.0:
+
+            # print negative score and word in red
+            rscore = colored(score, "red")
+            print(rscore, end=' ')
+            print(colored(tweet, "red"))
+
+        # if score value = 0/
+        else:
+
+            # print neutral score in yellow
+            yscore = colored(score, "yellow")
+            print(yscore, end=' ')
+            print(colored(tweet, "yellow"))
+
+if __name__ == "__main__":
+    main()

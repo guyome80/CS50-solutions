@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portofolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tfoot>
+
+
+        <tr>
+            <td colspan="4"></td>
+            <th>{{ totalcapital }}</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        {% for symbolgroup in rows %}
+        <tr>
+            <td>{{ symbolgroup.symbol }}</td>
+            <td>{{ symbolgroup.sharesname }}</td>
+            <td>{{ symbolgroup.shares }}</td>
+            <td>{{ symbolgroup.price }}</td>
+            <td>{{ symbolgroup.sharecapital }}</td>
+        </tr>
+        {% endfor %}
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{ cash | usd }}</td>
+            </tr>
+    </tbody>
+</table>
+{% endblock %}
