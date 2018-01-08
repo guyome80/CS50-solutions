@@ -33,7 +33,7 @@ def main():
     #end of printing!
     print("")
 
-# gives the k script with mod26
+# gives the k script with mod26, usefull for the alphabet !
 def get_k(n):
     n = n % 26
     return n
